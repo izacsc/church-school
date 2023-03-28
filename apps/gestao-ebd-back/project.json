@@ -1,0 +1,64 @@
+{
+  "name": "gestao-ebd-back",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/gestao-ebd-back/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/gestao-ebd-back",
+        "main": "apps/gestao-ebd-back/src/main.ts",
+        "tsConfig": "apps/gestao-ebd-back/tsconfig.app.json",
+        "assets": ["apps/gestao-ebd-back/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/gestao-ebd-back/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "gestao-ebd-back:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "gestao-ebd-back:build:development"
+        },
+        "production": {
+          "buildTarget": "gestao-ebd-back:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/gestao-ebd-back/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/gestao-ebd-back/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
