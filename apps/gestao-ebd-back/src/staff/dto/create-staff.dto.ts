@@ -8,6 +8,9 @@ export class CreateStaffDto {
   public role: string;
 
   @IsNotEmpty()
+  public birthday: string;
+
+  @IsNotEmpty()
   @IsOptional()
-  public class?: string;
+  public classId?: string;
 }

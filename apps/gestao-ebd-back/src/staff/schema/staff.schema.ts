@@ -10,10 +10,13 @@ export class Staff {
   name: string;
 
   @Prop()
+  birthday: string;
+
+  @Prop()
   role: string;
 
   @Prop()
-  class: string;
+  classId: string;
 }
 
 export const StaffSchema = SchemaFactory.createForClass(Staff);
