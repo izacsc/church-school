@@ -8,7 +8,7 @@ import { AppService } from './app.service';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb+srv://gestao-ebd-back:gestao-ebd-back@cluster0.jyuixz5.mongodb.net/?retryWrites=true&w=majority'
+      process.env.MONGODB_URI
     ),
     StaffModule,
   ],
